@@ -26,7 +26,7 @@ steps:
 
 - task: TwineAuthenticate@1
   inputs:
-    artifactFeed: <Opensources/robotframework>
+    artifactFeed: Opensources/robotframework
   displayName: 'Twine Authenticate'
 
 - script: |
