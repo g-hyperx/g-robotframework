@@ -71,7 +71,7 @@ setup(
     package_dir  = {'': 'src'},
     package_data = {'robot': PACKAGE_DATA},
     packages     = find_packages('src'),
-    requires     = [
+    install_requires     = [
         "dataclasses",
         "dataclasses-json",
         "PyMuPDF==1.22.3",
