@@ -30,5 +30,5 @@ steps:
   displayName: 'Twine Authenticate'
 
 - script: |
-    python -m twine upload -r Public --config-file $(PYPIRC_PATH) dist/*.whl
+    python -m twine upload -r Public --config-file $(PYPIRC_PATH) --skip-existing dist/*.whl
   displayName: 'Upload to feed'
