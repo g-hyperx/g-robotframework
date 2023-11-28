@@ -13,7 +13,6 @@ dataclasses
 dataclasses-json
 PyMuPDF==1.22.3
 fitz
-pyinstaller
 pycryptodome==3.18.0
 robotframework-excellib==2.0.1
 robotframework-pythonlibcore==2.2.1
