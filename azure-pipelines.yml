@@ -26,9 +26,9 @@ steps:
 
 - task: TwineAuthenticate@1
   inputs:
-    artifactFeed: Opensources/ghpx
+    artifactFeed: Opensources/Public
   displayName: 'Twine Authenticate'
 
 - script: |
-    python -m twine upload -r ghpx --config-file $(PYPIRC_PATH) dist/*.whl
+    python -m twine upload -r Public --config-file $(PYPIRC_PATH) dist/*.whl
   displayName: 'Upload to feed'
