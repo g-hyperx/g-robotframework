@@ -21,7 +21,8 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
-    python setup.py sdist bdist_wheel
+    python setup.py sdist --formats zip bdist_wheel
+    python -m twine check dist/*
   displayName: 'Python build'
 
 - task: TwineAuthenticate@1
@@ -30,5 +31,5 @@ steps:
   displayName: 'Twine Authenticate'
 
 - script: |
-    python -m twine upload -r Public --config-file $(PYPIRC_PATH) --skip-existing dist/*.whl
+    python -m twine upload -r Public --config-file $(PYPIRC_PATH) --skip-existing dist/*
   displayName: 'Upload to feed'
