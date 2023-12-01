@@ -17,7 +17,7 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip
-    pip install -r requirements.txt
+    pip install -r requirements-dev.txt
   displayName: 'Install dependencies'
 
 - script: |
@@ -31,5 +31,5 @@ steps:
   displayName: 'Twine Authenticate'
 
 - script: |
-    python -m twine upload -r Public --config-file $(PYPIRC_PATH) --skip-existing dist/*
+    python -m twine upload -r Public --config-file $(PYPIRC_PATH) dist/*
   displayName: 'Upload to feed'
