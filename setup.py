@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 # Version number typically updated by running `invoke set-version <version>`.
 # Run `invoke --help set-version` or see tasks.py for details.
-VERSION = '1.0.2'
+VERSION = '1.0.3'
 with open(join(dirname(abspath(__file__)), 'README.rst')) as f:
     LONG_DESCRIPTION = f.read()
     base_url = 'https://github.com/robotframework/robotframework/blob/master'
@@ -75,7 +75,6 @@ setup(
         "dataclasses==0.6",
         "dataclasses-json==0.6.3",
         "PyMuPDF==1.22.3",
-        "fitz==0.0.1.dev2",
         "pycryptodome==3.18.0",
         "robotframework-excel==1.0.0b4",
         "robotframework-excellib==2.0.1",
