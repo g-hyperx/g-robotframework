@@ -25,3 +25,16 @@ def _convert_pdf_to_img(pdf_path=None, pages=None, output_path=None, file_name=N
         return "Success"
     except Exception as ex:
         return ex
+
+def _get_pdf_full_text(pdf_path=None):
+    text = []
+    with fitz.open(str(pdf_path)) as doc:
+        for page in doc:
+            text.append(page.get_text())
+    return text
+
+def _get_pdf_full_text_by_page(pdf_path=None,page=None):
+    text = ''
+    with fitz.open(str(pdf_path)) as doc:
+        text = doc[int(page)].get_text()
+    return text

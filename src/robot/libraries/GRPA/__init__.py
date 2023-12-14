@@ -11,7 +11,7 @@ from .constant import HOST
 from robot.libraries.GRPA.google_vision import _google_vision_get_ocr_text, _google_vision_get_ocr_text_with_vertex, _match_area, _google_vision_get_OCR_text_with_label
 from robot.libraries.GRPA.csv import _write_list_to_csv
 from robot.libraries.GRPA.api_request import _logistics_api_request_download_file, _logistics_api_request_upload_file, _logistics_api_request_send_success, _logistics_api_request_send_page_count, _logistics_api_request_get_upload_detail, _logistics_api_request_send_fail_message, _logistics_api_request_create_transaction
-from robot.libraries.GRPA.pdf import _convert_pdf_to_img
+from robot.libraries.GRPA.pdf import _convert_pdf_to_img,_get_pdf_full_text,_get_pdf_full_text_by_page
 from robot.libraries.GRPA.common import _load_config, _get_file_sorted_modified_date, _join_list, _json_to_dict, _sorted_vertexs_to_list,_sorted_vertexs_by_line
 from robot.libraries.GRPA.assets import _get_asset_string_variable, _get_asset_integer_variable, _get_asset_float_variable
 from robot.libraries.GRPA.min_aik import _logistics_min_aik_ocr
@@ -75,8 +75,8 @@ class GRPA:
         return _match_area(vertexs, labels, skipx, skipy)
 
     @keyword("Write List To CSV")
-    def write_list_to_csv(self, file_name=None, data=None):
-        return _write_list_to_csv(file_name, data)
+    def write_list_to_csv(self, file_name=None, data=None, encode=None):
+        return _write_list_to_csv(file_name, data,encode)
 
     @keyword("Google Vision Get OCR Text With Label")
     def google_vision_get_OCR_text_with_label(self, api_key, img_path, labels):
@@ -113,6 +113,14 @@ class GRPA:
     @keyword("Convert PDF To Img")
     def convert_pdf_to_img(self, pdf_path, pages, output_path, file_name="img", format_file="jpg", scale=300/72, rotation=0):
         return _convert_pdf_to_img(pdf_path, pages, output_path, file_name, format_file, scale, rotation)
+    
+    @keyword("Get PDF Full Text")
+    def get_pdf_full_text(self,pdf_path=None):
+        return _get_pdf_full_text(pdf_path)
+    
+    @keyword("Get PDF Full Text By Page")
+    def get_pdf_full_text_by_page(self,pdf_path=None,page=None):
+        return _get_pdf_full_text_by_page(pdf_path,page)
 
     @keyword("Load Config")
     def load_config(self):
