@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 # Version number typically updated by running `invoke set-version <version>`.
 # Run `invoke --help set-version` or see tasks.py for details.
-VERSION = '2.0.1'
+VERSION = '2.1.0'
 with open(join(dirname(abspath(__file__)), 'README.rst')) as f:
     LONG_DESCRIPTION = f.read()
     base_url = 'https://github.com/robotframework/robotframework/blob/master'
@@ -92,7 +92,6 @@ setup(
         "google-cloud-vision==3.4.5",
         "pypdfium2==4.15.0",
         "types-ipaddress==1.0.8",
-        "urllib3"
     ],
     entry_points={'console_scripts': ['gbot = robot.run:run_cli',
                                       'rebot = robot.rebot:rebot_cli',

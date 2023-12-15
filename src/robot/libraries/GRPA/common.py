@@ -4,16 +4,6 @@ import json
 from pathlib import Path
 
 
-def _load_config():
-    tmpPath = f"{Path.home()}\\G-RPA-Agent-Temporary"
-    config_path = f"{tmpPath}\\config.json"
-    dictObject = {}
-    if path.exists(config_path):
-        file = open(config_path, "r")
-        dictObject = json.load(file)
-        file.close()
-    return dictObject
-
 def _get_file_sorted_modified_date(path=None):
     files = os.listdir(path)
     files = [os.path.join(path, f) for f in files]

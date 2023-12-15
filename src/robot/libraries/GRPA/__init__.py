@@ -12,7 +12,7 @@ from robot.libraries.GRPA.google_vision import _google_vision_get_ocr_text, _goo
 from robot.libraries.GRPA.csv import _write_list_to_csv
 from robot.libraries.GRPA.api_request import _logistics_api_request_download_file, _logistics_api_request_upload_file, _logistics_api_request_send_success, _logistics_api_request_send_page_count, _logistics_api_request_get_upload_detail, _logistics_api_request_send_fail_message, _logistics_api_request_create_transaction
 from robot.libraries.GRPA.pdf import _convert_pdf_to_img,_get_pdf_full_text,_get_pdf_full_text_by_page
-from robot.libraries.GRPA.common import _load_config, _get_file_sorted_modified_date, _join_list, _json_to_dict, _sorted_vertexs_to_list,_sorted_vertexs_by_line
+from robot.libraries.GRPA.common import _get_file_sorted_modified_date, _join_list, _json_to_dict, _sorted_vertexs_to_list,_sorted_vertexs_by_line
 from robot.libraries.GRPA.assets import _get_asset_string_variable, _get_asset_integer_variable, _get_asset_float_variable
 from robot.libraries.GRPA.min_aik import _logistics_min_aik_ocr
 from robot.libraries.GRPA.multiplex_queue import _add_queue_to_multiplex_queue, _get_queue_inside_multiplex_queue
@@ -23,30 +23,17 @@ class GRPA:
 
     ROBOT_LIBRARY_VERSION = VERSION
 
-    # Common
-    @keyword("Robotlog Activity")
-    def robotlog_activity(self, msg=None):
-        if msg is None:
-            raise AssertionError('None message!')
-        now = datetime.now()
-
-        data = {
-            'timestamp': now.isoformat(),
-            'msg': msg,
-        }
-        put(f"{HOST}/activity", json=data)
-
     @keyword("Get Asset String Variable")
-    def get_asset_string_variable(self, vname=None):
-        return _get_asset_string_variable(vname)
+    def get_asset_string_variable(self, vname=None, tenantId=None, directoryId=None, apigwUrl=None):
+        return _get_asset_string_variable(vname, tenantId, directoryId, apigwUrl)
 
     @keyword("Get Asset Integer Variable")
-    def get_asset_integer_variable(self, vname=None):
-        return _get_asset_integer_variable(vname)
+    def get_asset_integer_variable(self, vname=None, tenantId=None, directoryId=None, apigwUrl=None):
+        return _get_asset_integer_variable(vname, tenantId, directoryId, apigwUrl)
 
     @keyword("Get Asset Float Variable")
-    def get_asset_float_variable(self, vname=None):
-        return _get_asset_float_variable(vname)
+    def get_asset_float_variable(self, vname=None, tenantId=None, directoryId=None, apigwUrl=None):
+        return _get_asset_float_variable(vname, tenantId, directoryId, apigwUrl)
     
     @keyword("Get Queue Inside Multiplex Queue")
     def get_queue_inside_multiplex_queue(self, job_multiplex_queue_id=None):
@@ -122,9 +109,6 @@ class GRPA:
     def get_pdf_full_text_by_page(self,pdf_path=None,page=None):
         return _get_pdf_full_text_by_page(pdf_path,page)
 
-    @keyword("Load Config")
-    def load_config(self):
-        return _load_config()
 
     @keyword("Get Files Sorted Modified Date")
     def get_file_sorted_modified_date(self, path=None):
