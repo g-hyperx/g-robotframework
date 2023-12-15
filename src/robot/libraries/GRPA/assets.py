@@ -24,14 +24,14 @@ def _get_asset_string_variable(vname=None):
                    headers={
                        "GHPX-Agentless-APIKey": apiKey
                    },
-                   json=data)
+                   params=data)
     else:
         apiKey = getenv("AGENTAPIKEY")
         resp = get(f"{apigwUrl}/kernel/asset/get-variable",
                    headers={
                        "GHPX-Agent-API-Key": apiKey
                    },
-                   json=data)
+                   params=data)
 
     if resp.status_code == 200:
         return resp.content.decode()
@@ -60,14 +60,14 @@ def _get_asset_integer_variable(vname=None):
                    headers={
                        "GHPX-Agentless-APIKey": apiKey
                    },
-                   json=data)
+                   params=data)
     else:
         apiKey = getenv("AGENTAPIKEY")
         resp = get(f"{apigwUrl}/kernel/asset/get-variable",
                    headers={
                        "GHPX-Agent-API-Key": apiKey
                    },
-                   json=data)
+                   params=data)
 
 
     if resp.status_code == 200:
@@ -97,14 +97,14 @@ def _get_asset_float_variable(vname=None):
                    headers={
                        "GHPX-Agentless-APIKey": apiKey
                    },
-                   json=data)
+                   params=data)
     else:
         apiKey = getenv("AGENTAPIKEY")
         resp = get(f"{apigwUrl}/kernel/asset/get-variable",
                    headers={
                        "GHPX-Agent-API-Key": apiKey
                    },
-                   json=data)
+                   params=data)
 
 
     if resp.status_code == 200:
