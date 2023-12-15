@@ -18,6 +18,7 @@ def _get_asset_string_variable(vname=None):
         "TenantID": tenantId,
         "DirectoryID": directoryId,
     }
+
     if agentType == "serverless":
         apiKey = getenv("APIKEY")
         resp = get(f"{apigwUrl}/kernel/asset/get-variable",
@@ -34,7 +35,7 @@ def _get_asset_string_variable(vname=None):
                    params=data)
 
     if resp.status_code == 200:
-        return resp.content.decode()
+        return resp.json()["Value"]
     else:
         raise AssertionError(resp.content.decode())
 
@@ -71,7 +72,7 @@ def _get_asset_integer_variable(vname=None):
 
 
     if resp.status_code == 200:
-        return int(float(resp.content.decode()))
+        return int(float(resp.json()["Value"]))
     else:
         raise AssertionError(resp.content.decode())
 
@@ -91,6 +92,7 @@ def _get_asset_float_variable(vname=None):
         "TenantID": tenantId,
         "DirectoryID": directoryId,
     }
+
     if agentType == "serverless":
         apiKey = getenv("APIKEY")
         resp = get(f"{apigwUrl}/kernel/asset/get-variable",
@@ -108,6 +110,6 @@ def _get_asset_float_variable(vname=None):
 
 
     if resp.status_code == 200:
-        return float(resp.content.decode())
+        return float(resp.json()["Value"])
     else:
         raise AssertionError(resp.content.decode())
