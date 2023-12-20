@@ -54,7 +54,7 @@ class GRPA:
 
     @keyword("Write List To CSV")
     def write_list_to_csv(self, file_name=None, data=None, encode=None):
-        return _write_list_to_csv(file_name, data,encode)
+        return _write_list_to_csv(file_name, data)
 
     @keyword("Google Vision Get OCR Text With Label")
     def google_vision_get_OCR_text_with_label(self, api_key, img_path, labels):
