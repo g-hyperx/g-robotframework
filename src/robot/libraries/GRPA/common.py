@@ -2,7 +2,9 @@ from os import path
 import os
 import json
 from pathlib import Path
-
+import random
+import string
+import uuid
 
 def _get_file_sorted_modified_date(path=None):
     files = os.listdir(path)
@@ -18,6 +20,15 @@ def _json_to_dict(jsonstr=None):
         raise AssertionError('None json string!')
 
     return json.loads(jsonstr)
+
+def _random_string(length=None):
+    if length is None:
+        raise AssertionError('None length')
+
+    return ''.join(random.choices(string.ascii_letters, k=length))
+
+def _get_uuidv4():
+    return str(uuid.uuid4())
 
 def _sorted_vertexs_to_list(vertexs=None,space_x=None,space_y=None):
     texts = sorted(vertexs, key=lambda item: ((item.bounding_poly.vertices[0].y*10000)+item.bounding_poly.vertices[0].x))
