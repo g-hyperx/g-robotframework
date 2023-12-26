@@ -73,7 +73,7 @@ class GRPA:
         return _logistics_api_request_send_success(url, upload_id, token,incompleted,remark)
 
     @keyword("Logistics API Request Send Start")
-    def api_request_send_success(self, url=None, upload_id=None, token=None):
+    def api_request_send_start(self, url=None, upload_id=None, token=None):
         return _logistics_api_request_send_start(url, upload_id, token)
 
     @keyword("Logistics API Request Send Page Count")
