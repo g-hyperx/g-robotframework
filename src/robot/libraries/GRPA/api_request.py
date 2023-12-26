@@ -60,6 +60,17 @@ def _logistics_api_request_send_page_count(url=None, upload_id=None, token=None,
     response = requests.request("PATCH", url, headers=headers, data=payload, verify=False)
     return response
 
+def _logistics_api_request_send_start(url=None, upload_id=None, token=None):
+    payload = json.dumps({
+        "upload_id": upload_id,
+    })
+    headers = {
+        'x-access-token': token,
+        'Content-Type': 'application/json'
+    }
+    response = requests.request("PATCH", url, headers=headers, data=payload, verify=False)
+    return response
+
 def _logistics_api_request_send_fail_message(url=None, upload_id=None, token=None, message=None):
     up_dict = {"upload_id":upload_id}
     payload = json.dumps({
