@@ -31,5 +31,5 @@ steps:
   displayName: 'Twine Authenticate'
 
 - script: |
-    python -m twine upload -r Public --config-file $(PYPIRC_PATH) dist/*
+    python -m twine upload -r GHPX-Public-Feed --config-file $(PYPIRC_PATH) dist/*
   displayName: 'Upload to feed'
