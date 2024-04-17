@@ -5,6 +5,12 @@ on:
     branches:
       - main
       - master
+    paths:
+      - '.github/workflows/**'
+      - 'src/**'
+      - 'utest/**'
+      - '!**/*.rst'
+
 
 jobs:
   test_using_builtin_python:
