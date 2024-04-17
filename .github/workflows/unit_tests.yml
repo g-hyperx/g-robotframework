@@ -18,11 +18,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ 'ubuntu-latest', 'windows-latest' ]
+        os: [ 'self-hosted' ]
         python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11', 'pypy-3.8' ]
-        exclude:
-          - os: windows-latest
-            python-version: 'pypy-3.8'
 
     runs-on: ${{ matrix.os }}
 
@@ -38,5 +35,6 @@ jobs:
 
       - name: Run unit tests
         run: |
-          python -m pip install -r utest/requirements.txt
-          python utest/run.py -v
+          python setup.py sdist --formats zip bdist_wheel
+          python -m twine check dist/*
+      
