@@ -1,10 +1,9 @@
 name: Publish to pypi
 
 on:
-  workflow_run:
-    workflows: ['Unit tests']
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
@@ -30,8 +29,8 @@ jobs:
     - name: 'Build'
       shell: bash
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements-dev.txt
+        python setup.py sdist --formats zip bdist_wheel
+        python -m twine check dist/*
 
     - name: Publish package to PyPi
       uses: pypa/gh-action-pypi-publish@release/v1
