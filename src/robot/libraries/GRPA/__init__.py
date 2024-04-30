@@ -8,7 +8,7 @@ import threading
 from robot.api.logger import console
 from requests import put, post
 from .constant import HOST
-from robot.libraries.GRPA.google_vision import _google_vision_get_ocr_text, _google_vision_get_ocr_text_with_vertex, _match_area, _google_vision_get_OCR_text_with_label
+from robot.libraries.GRPA.google_vision import _google_vision_get_ocr_text, _google_vision_get_ocr_text_with_vertex, _match_area, _google_vision_get_OCR_text_with_label, _ocr_text_concat_with_space_size, _ocr_text_concat_average_size
 from robot.libraries.GRPA.csv import _write_list_to_csv
 from robot.libraries.GRPA.api_request import _logistics_api_request_download_file, _logistics_api_request_send_start, _logistics_api_request_upload_file, _logistics_api_request_send_success, _logistics_api_request_send_page_count, _logistics_api_request_get_upload_detail, _logistics_api_request_send_fail_message, _logistics_api_request_create_transaction
 from robot.libraries.GRPA.pdf import _convert_pdf_to_img,_get_pdf_full_text,_get_pdf_full_text_by_page
@@ -49,8 +49,8 @@ class GRPA:
         return _google_vision_get_ocr_text_with_vertex(api_key, file_path)
 
     @keyword("Match Area")
-    def match_area(self, vertexs=None, labels=None, skipx=0, skipy=0):
-        return _match_area(vertexs, labels, skipx, skipy)
+    def match_area(self, vertexs=None, labels=None, skipx=0, skipy=0, full_response=False):
+        return _match_area(vertexs, labels, skipx, skipy, full_response)
 
     @keyword("Write List To CSV")
     def write_list_to_csv(self, file_name=None, data=None, encode=None):
@@ -172,3 +172,11 @@ class GRPA:
     @keyword("Random String")
     def random_string(self,length=None):
         return _random_string(length)
+
+    @keyword("OCR Text Concat With Space Size")
+    def ocr_text_concat_with_space_size(self,vertexs=None,space_x=None):
+        return _ocr_text_concat_with_space_size(vertexs,space_x)
+    
+    @keyword("OCR Text Concat Average Size")
+    def ocr_text_concat_average_size(self,vertexs=None):
+        return _ocr_text_concat_average_size(vertexs)
