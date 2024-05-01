@@ -81,6 +81,7 @@ def _ocr_text_concat_with_space_size(vertexs=None,space_x=None):
     last_x = -1
     for vertex in vertexs:
         if last_x < 0:
+            result = vertex.description
             last_x = vertex.bounding_poly.vertices[1].x
         elif vertex.bounding_poly.vertices[0].x - last_x < space_x:
             if vertex.bounding_poly.vertices[0].x < last_x:
@@ -108,6 +109,7 @@ def _ocr_text_concat_average_size(vertexs=None):
     space_x = math.ceil(sum(space_list)/len(space_list))        
     for vertex in vertexs:
         if last_x < 0:
+            result = vertex.description
             last_x = vertex.bounding_poly.vertices[1].x
         elif vertex.bounding_poly.vertices[0].x - last_x < space_x:
             if vertex.bounding_poly.vertices[0].x < last_x:
