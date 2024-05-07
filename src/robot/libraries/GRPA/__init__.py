@@ -53,8 +53,8 @@ class GRPA:
         return _match_area(vertexs, labels, skipx, skipy, full_response)
 
     @keyword("Write List To CSV")
-    def write_list_to_csv(self, file_name=None, data=None, encode=None):
-        return _write_list_to_csv(file_name, data)
+    def write_list_to_csv(self, file_name=None, data=None, encode="utf-8-sig"):
+        return _write_list_to_csv(file_name, data, encode)
 
     @keyword("Google Vision Get OCR Text With Label")
     def google_vision_get_OCR_text_with_label(self, api_key, img_path, labels):
