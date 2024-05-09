@@ -69,8 +69,8 @@ class GRPA:
         return _logistics_api_request_upload_file(url, upload_id, token, company, path, file_name)
 
     @keyword("Logistics API Request Send Success")
-    def api_request_send_success(self, url=None, upload_id=None, token=None,incompleted=None,remark=None):
-        return _logistics_api_request_send_success(url, upload_id, token,incompleted,remark)
+    def api_request_send_success(self, url=None, upload_id=None, token=None,incompleted=None,remark=None,bom=False):
+        return _logistics_api_request_send_success(url, upload_id, token,incompleted,remark,bom)
 
     @keyword("Logistics API Request Send Start")
     def api_request_send_start(self, url=None, upload_id=None, token=None):

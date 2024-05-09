@@ -34,11 +34,12 @@ def _logistics_api_request_get_upload_detail(url=None, upload_id=None, token=Non
     return jsonData
 
 
-def _logistics_api_request_send_success(url=None, upload_id=None, token=None,incompleted=None,remark=None):
+def _logistics_api_request_send_success(url=None, upload_id=None, token=None,incompleted=None,remark=None,bom=False):
     payload = json.dumps({
         "upload_id": upload_id,
         "incompleted": incompleted,
-        "remark":remark
+        "remark":remark,
+        "bom_flag":bom
     })
     headers = {
         'x-access-token': token,
