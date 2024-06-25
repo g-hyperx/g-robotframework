@@ -179,8 +179,8 @@ class GRPA:
         return _random_string(length)
 
     @keyword("OCR Text Concat With Space Size")
-    def ocr_text_concat_with_space_size(self,vertexs=None,space_x=None):
-        return _ocr_text_concat_with_space_size(vertexs,space_x)
+    def ocr_text_concat_with_space_size(self,vertexs=None,space_x=None,newline=None):
+        return _ocr_text_concat_with_space_size(vertexs,space_x,newline)
     
     @keyword("OCR Text Concat Average Size")
     def ocr_text_concat_average_size(self,vertexs=None):

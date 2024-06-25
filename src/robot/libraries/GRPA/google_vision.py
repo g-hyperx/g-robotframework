@@ -76,7 +76,7 @@ def _google_vision_get_OCR_text_with_label(api_key=None,img_path=None,labels=Non
             grpa_label_response[label["label"]] = None
     return grpa_label_response
 
-def _ocr_text_concat_with_space_size(vertexs=None,space_x=None):
+def _ocr_text_concat_with_space_size(vertexs=None,space_x=None,newline=None):
     result = ''
     last_x = -1
     for vertex in vertexs:
@@ -85,7 +85,10 @@ def _ocr_text_concat_with_space_size(vertexs=None,space_x=None):
             last_x = vertex.bounding_poly.vertices[1].x
         elif vertex.bounding_poly.vertices[0].x - last_x < space_x:
             if vertex.bounding_poly.vertices[0].x < last_x:
-                result = result + ' ' + vertex.description 
+                if newline == None:
+                    result = result + ' ' + vertex.description 
+                else:
+                    result = result + str(newline) + vertex.description 
             else:
                 result = result + vertex.description
             last_x = vertex.bounding_poly.vertices[1].x
