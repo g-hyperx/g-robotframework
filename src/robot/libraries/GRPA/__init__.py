@@ -16,16 +16,12 @@ from robot.libraries.GRPA.common import _get_file_sorted_modified_date, _join_li
 from robot.libraries.GRPA.assets import _get_asset_string_variable, _get_asset_integer_variable, _get_asset_float_variable
 from robot.libraries.GRPA.min_aik import _logistics_min_aik_ocr
 from robot.libraries.GRPA.kuenhe import _logistics_kuenhe_ocr1,_logistics_kuenhe_ocr2
-from robot.libraries.GRPA.azure import _hello_func
+from robot.libraries.GRPA.azure import _azure_ocr_text_with_vertex
 
 @library
 class GRPA:
 
     ROBOT_LIBRARY_VERSION = VERSION
-
-    @keyword("Hello Function")
-    def hello_func(self,var1,var2=0):
-        return _hello_func(var1,var2)
 
     @keyword("Get Asset String Variable")
     def get_asset_string_variable(self, vname=None):
@@ -64,6 +60,10 @@ class GRPA:
     @keyword("Google Vision Get OCR Text With Label")
     def google_vision_get_OCR_text_with_label(self, api_key, img_path, labels):
         return _google_vision_get_OCR_text_with_label(api_key, img_path, labels)
+    
+    @keyword("Azure OCR Text With Vertex")
+    def azure_ocr_text_with_vertex(self, api_key=None, endpoint=None, file_path=None):
+        return _azure_ocr_text_with_vertex(api_key, endpoint, file_path)
 
     @keyword("Logistics API Request Download File")
     def api_request_download_file(self, url=None, source_id=None, token=None, path=None):
