@@ -87,7 +87,7 @@ def _ocr_text_concat_with_space_size(vertexs=None,space_x=None,newline=None):
             if vertex.bounding_poly.vertices[0].x < last_x:
                 if newline == None:
                     result = result + ' ' + vertex.description 
-                else:
+                elif int(vertex.bounding_poly.vertices[0].x) + 10 < int(last_x):
                     result = result + str(newline) + vertex.description 
             else:
                 result = result + vertex.description
