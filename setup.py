@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 # Version number typically updated by running `invoke set-version <version>`.
 # Run `invoke --help set-version` or see tasks.py for details.
-VERSION = '2.4.3'
+VERSION = '2.4.4'
 with open(join(dirname(abspath(__file__)), 'README.rst')) as f:
     LONG_DESCRIPTION = f.read()
     base_url = 'https://github.com/robotframework/robotframework/blob/master'
@@ -93,6 +93,10 @@ setup(
         "pypdfium2==4.15.0",
         "types-ipaddress==1.0.8",
         "azure-cognitiveservices-vision-computervision==0.9.0",
+        "azure-core==1.30.1",
+        "azure-ai-formrecognizer==3.3.2",
+        "azure-common==1.1.28",
+        "PyPDF2==3.0.1"
     ],
     entry_points={'console_scripts': ['gbot = robot.run:run_cli',
                                       'rebot = robot.rebot:rebot_cli',

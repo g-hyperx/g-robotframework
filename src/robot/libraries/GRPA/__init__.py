@@ -17,11 +17,20 @@ from robot.libraries.GRPA.assets import _get_asset_string_variable, _get_asset_i
 from robot.libraries.GRPA.min_aik import _logistics_min_aik_ocr
 from robot.libraries.GRPA.kuenhe import _logistics_kuenhe_ocr1,_logistics_kuenhe_ocr2
 from robot.libraries.GRPA.azure import _azure_ocr_text_with_vertex
+from robot.libraries.GRPA.azure_formrecognize import _azure_formrecognize_invoice
 
 @library
 class GRPA:
 
     ROBOT_LIBRARY_VERSION = VERSION
+
+    #@keyword("Hello Function")
+    #def hello_func(self,var1,var2=0):
+    #    return _hello_func(var1,var2)
+    
+    @keyword("Azure Invoice Recognize")
+    def azure_formrecognize_invoice(self,a_endpoint,a_key,doc_path,doc_fields):
+        return _azure_formrecognize_invoice(a_endpoint,a_key,doc_path,doc_fields)
 
     @keyword("Get Asset String Variable")
     def get_asset_string_variable(self, vname=None):
