@@ -16,7 +16,7 @@ from robot.libraries.GRPA.common import _get_file_sorted_modified_date, _join_li
 from robot.libraries.GRPA.assets import _get_asset_string_variable, _get_asset_integer_variable, _get_asset_float_variable
 from robot.libraries.GRPA.min_aik import _logistics_min_aik_ocr
 from robot.libraries.GRPA.kuenhe import _logistics_kuenhe_ocr1,_logistics_kuenhe_ocr2
-from robot.libraries.GRPA.azure import _azure_ocr_text_with_vertex
+from robot.libraries.GRPA.azure_ocr import _azure_ocr_text_with_vertex
 from robot.libraries.GRPA.azure_formrecognize import _azure_formrecognize_invoice
 
 @library
