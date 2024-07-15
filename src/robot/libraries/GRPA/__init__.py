@@ -18,6 +18,7 @@ from robot.libraries.GRPA.min_aik import _logistics_min_aik_ocr
 from robot.libraries.GRPA.kuenhe import _logistics_kuenhe_ocr1,_logistics_kuenhe_ocr2
 from robot.libraries.GRPA.azure_ocr import _azure_ocr_text_with_vertex
 from robot.libraries.GRPA.azure_formrecognize import _azure_formrecognize_invoice
+from robot.libraries.GRPA.image_enhancement import _resize_image,_get_image_size
 
 @library
 class GRPA:
@@ -47,6 +48,14 @@ class GRPA:
     @keyword("Json To Dict")
     def json_to_dict(self, jsonstr = None):
         return _json_to_dict(jsonstr)
+    
+    @keyword("Resize Image")
+    def resize_image(self, input_img_path=None, output_img_path=None, width=None, height=None):
+        return _resize_image(input_img_path, output_img_path, width, height)
+    
+    @keyword("Get Image Size")
+    def get_image_size(self, input_img_path=None):
+        return _get_image_size(input_img_path)
     
     #OCR
 
