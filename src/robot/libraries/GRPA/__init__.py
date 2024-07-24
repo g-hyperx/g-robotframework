@@ -12,7 +12,7 @@ from robot.libraries.GRPA.google_vision import _google_vision_get_ocr_text, _goo
 from robot.libraries.GRPA.csv import _write_list_to_csv
 from robot.libraries.GRPA.api_request import _logistics_api_request_download_file, _logistics_api_request_send_start, _logistics_api_request_upload_file, _logistics_api_request_send_success, _logistics_api_request_send_page_count, _logistics_api_request_get_upload_detail, _logistics_api_request_send_fail_message, _logistics_api_request_create_transaction
 from robot.libraries.GRPA.pdf import _convert_pdf_to_img,_get_pdf_full_text,_get_pdf_full_text_by_page
-from robot.libraries.GRPA.common import _get_file_sorted_modified_date, _join_list, _json_to_dict, _sorted_vertexs_to_list,_sorted_vertexs_by_line, _get_uuidv4, _random_string
+from robot.libraries.GRPA.common import _get_file_sorted_modified_date, _join_list, _json_to_dict, _sorted_vertexs_to_list,_sorted_vertexs_by_line, _get_uuidv4, _random_string, _convert_csv_list_to_dict_of_list, _convert_csv_list_to_list_of_dict, _convert_dict_of_list_to_csv_list, _convert_list_of_dict_to_csv_list
 from robot.libraries.GRPA.assets import _get_asset_string_variable, _get_asset_integer_variable, _get_asset_float_variable
 from robot.libraries.GRPA.min_aik import _logistics_min_aik_ocr
 from robot.libraries.GRPA.kuenhe import _logistics_kuenhe_ocr1,_logistics_kuenhe_ocr2
@@ -143,6 +143,22 @@ class GRPA:
     @keyword("Convert Date String Format")
     def convert_date_string_format(self,word=None,oformat=None,nformat=None):
         return datetime.strptime(word,oformat).strftime(nformat)
+    
+    @keyword("Convert CSV List To Dict Of List")
+    def convert_csv_list_to_dict_of_list(csv_list=None):
+        return _convert_csv_list_to_dict_of_list(csv_list)
+    
+    @keyword("Convert CSV List To List Of Dict")
+    def convert_csv_list_to_list_of_dict(csv_list=None):
+        return _convert_csv_list_to_list_of_dict(csv_list)
+    
+    @keyword("Convert Dict Of List To CSV List")
+    def convert_dict_of_list_to_csv_list(dict_of_list=None):
+        return _convert_dict_of_list_to_csv_list(dict_of_list)
+    
+    @keyword("Convert List Of Dict To CSV List")
+    def convert_list_of_dict_to_csv_list(list_of_dict=None):
+        return _convert_list_of_dict_to_csv_list(list_of_dict)
     
     @keyword("Indexof")
     def indexOf(self,word=None,search=None):
