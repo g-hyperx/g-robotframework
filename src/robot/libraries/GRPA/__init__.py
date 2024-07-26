@@ -145,19 +145,19 @@ class GRPA:
         return datetime.strptime(word,oformat).strftime(nformat)
     
     @keyword("Convert CSV List To Dict Of List")
-    def convert_csv_list_to_dict_of_list(csv_list=None):
+    def convert_csv_list_to_dict_of_list(self,csv_list=None):
         return _convert_csv_list_to_dict_of_list(csv_list)
     
     @keyword("Convert CSV List To List Of Dict")
-    def convert_csv_list_to_list_of_dict(csv_list=None):
+    def convert_csv_list_to_list_of_dict(self,csv_list=None):
         return _convert_csv_list_to_list_of_dict(csv_list)
     
     @keyword("Convert Dict Of List To CSV List")
-    def convert_dict_of_list_to_csv_list(dict_of_list=None):
+    def convert_dict_of_list_to_csv_list(self,dict_of_list=None):
         return _convert_dict_of_list_to_csv_list(dict_of_list)
     
     @keyword("Convert List Of Dict To CSV List")
-    def convert_list_of_dict_to_csv_list(list_of_dict=None):
+    def convert_list_of_dict_to_csv_list(self,list_of_dict=None):
         return _convert_list_of_dict_to_csv_list(list_of_dict)
     
     @keyword("Indexof")
