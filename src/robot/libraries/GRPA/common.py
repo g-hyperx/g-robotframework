@@ -78,53 +78,66 @@ def _sorted_vertexs_by_line(vertexs=None,space_y=None):
 
 def _convert_csv_list_to_dict_of_list(csv_list=None):
     out_dict = {}
-    for i in csv_list:
-        if first:
-            for j in i:
-                out_dict[j] = []
-            first = False
-        else:
-            index = 0
-            for j in out_dict:
-                out_dict[j].append(i[index])
-                index = index + 1
-    return out_dict
+    first = True
+    try:
+        for i in csv_list:
+            if first:
+                for j in i:
+                    out_dict[j] = []
+                first = False
+            else:
+                index = 0
+                for j in out_dict:
+                    out_dict[j].append(i[index])
+                    index = index + 1
+        return out_dict
+    except Exception as ermes:
+        return ermes
 
 def _convert_csv_list_to_list_of_dict(csv_list=None):
     out_dict = []
-    for i in range(1,len(csv_list)):
-        load_dict = {}
-        for j in range(len(csv_list[i])):
-            load_dict[csv_list[0][j]] = csv_list[i][j]
-        out_dict.append(load_dict)
-    return out_dict
+    try:
+        for i in range(1,len(csv_list)):
+            load_dict = {}
+            for j in range(len(csv_list[i])):
+                load_dict[csv_list[0][j]] = csv_list[i][j]
+            out_dict.append(load_dict)
+        return out_dict
+    except Exception as ermes:
+        return ermes
 
 def _convert_dict_of_list_to_csv_list(dict_of_list=None):
     csv_list = [[]]
     first = True
-    for i in dict_of_list:
-        csv_list[0].append(i)
-        if first:
-            for j in dict_of_list[i]:
-                csv_list.append([j])
-            first = False
-        else:
-            index = 1
-            for j in dict_of_list[i]:
-                csv_list[index].append(j)
-                index = index + 1
-    return csv_list
+    try:
+        for i in dict_of_list:
+            csv_list[0].append(i)
+            if first:
+                for j in dict_of_list[i]:
+                    csv_list.append([j])
+                first = False
+            else:
+                index = 1
+                for j in dict_of_list[i]:
+                    csv_list[index].append(j)
+                    index = index + 1
+        return csv_list
+    except Exception as ermes:
+        return ermes
 
 def _convert_list_of_dict_to_csv_list(list_of_dict=None):
     csv_list = [[]]
     first = True
-    for i in list_of_dict:
-        load_list = []
-        for j in i:
-            if first:
-                csv_list[0].append(j)
-            load_list.append(i[j])
-        csv_list.append(load_list) 
-    first = False
-    return csv_list
+    try:
+        for i in list_of_dict:
+            load_list = []
+            for j in i:
+                if first:
+                    csv_list[0].append(j)
+                load_list.append(i[j])
+            csv_list.append(load_list) 
+        first = False
+        return csv_list
+    except Exception as ermes:
+        return ermes
 
