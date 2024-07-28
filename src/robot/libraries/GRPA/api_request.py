@@ -140,7 +140,7 @@ def _new_version_ghf_api_request_send_success(apiUrl=None, ts_id=None, token=Non
     return response
 
 
-def _logistics_api_request_send_start(apiUrl=None, ts_id=None, token=None):
+def _new_version_ghf_api_request_send_start(apiUrl=None, ts_id=None, token=None):
     payload = json.dumps({
         "mode": "start",
     })
