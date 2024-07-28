@@ -116,11 +116,11 @@ def _new_version_ghf_api_request_download_file(apiUrl=None, source_id=None, toke
         binary_file.close()
 
 
-def _new_version_ghf_api_request_upload_file(apiUrl=None, record_id=None, token=None, company=None, path=None, file_name=None):
+def _new_version_ghf_api_request_upload_file(apiUrl=None, ts_id=None, token=None, path=None, file_name=None):
     files = [('files', (file_name, open(path, 'rb'), 'text/csv'))]
     headers = {'x-api-key': token}
     response = requests.request(
-        "PUT", f"{apiUrl}/files/robot/{record_id}/result", headers=headers, files=files, verify=False)
+        "PUT", f"{apiUrl}/files/robot/{ts_id}/result", headers=headers, files=files, verify=False)
     return response
 
 
