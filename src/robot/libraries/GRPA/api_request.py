@@ -103,3 +103,65 @@ def _logistics_api_request_create_transaction(url=None,upload_id=None , token=No
     }
     response = requests.request("POST", url, headers=headers, data=payload, verify=False)
     return response
+
+
+
+def _new_version_ghf_api_request_download_file(apiUrl=None, source_id=None, token=None, path=None):
+    headers = {
+        'x-api-key': token,
+    }
+    response = requests.request("GET", f"{apiUrl}/source-file/{source_id}", headers=headers, verify=False)
+    with open(path, "wb") as binary_file:
+        binary_file.write(response.content)
+        binary_file.close()
+
+
+def _new_version_ghf_api_request_upload_file(apiUrl=None, record_id=None, token=None, company=None, path=None, file_name=None):
+    files = [('files', (file_name, open(path, 'rb'), 'text/csv'))]
+    headers = {'x-api-key': token}
+    response = requests.request(
+        "PUT", f"{apiUrl}/files/robot/{record_id}/result", headers=headers, files=files, verify=False)
+    return response
+
+
+def _new_version_ghf_api_request_send_success(apiUrl=None, ts_id=None, token=None, page_count=0, invalid_page_count=0,remark=None,bom=False):
+    payload = json.dumps({
+        "mode": "success",
+        "remark":remark,
+        "is_bom_flag":bool(bom),
+        "data_page_count": int(page_count),
+        "nodata_page_count": int(invalid_page_count),
+    })
+    headers = {
+        'x-api-key': token,
+        'Content-Type': 'application/json'
+    }
+    response = requests.request("PUT", f"{apiUrl}/transaction/{ts_id}", headers=headers, data=payload, verify=False)
+    return response
+
+
+def _logistics_api_request_send_start(apiUrl=None, ts_id=None, token=None):
+    payload = json.dumps({
+        "mode": "start",
+    })
+    headers = {
+        'x-api-key': token,
+        'Content-Type': 'application/json'
+    }
+    response = requests.request("PUT", f"{apiUrl}/transaction/{ts_id}", headers=headers, data=payload, verify=False)
+    return response
+
+def _new_version_ghf_api_request_fail_message(apiUrl=None, ts_id=None, token=None, page_count=0, invalid_page_count=0,remark=None,bom=False):
+    payload = json.dumps({
+        "mode": "failed",
+        "remark": remark,
+        "is_bom_flag":bool(bom),
+        "data_page_count": int(page_count),
+        "nodata_page_count": int(invalid_page_count),
+    })
+    headers = {
+        'x-api-key': token,
+        'Content-Type': 'application/json'
+    }
+    response = requests.request("PUT", f"{apiUrl}/transaction/{ts_id}", headers=headers, data=payload, verify=False)
+    return response

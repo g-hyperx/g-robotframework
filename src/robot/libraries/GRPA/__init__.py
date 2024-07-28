@@ -10,7 +10,7 @@ from requests import put, post
 from .constant import HOST
 from robot.libraries.GRPA.google_vision import _google_vision_get_ocr_text, _google_vision_get_ocr_text_with_vertex, _match_area, _google_vision_get_OCR_text_with_label, _ocr_text_concat_with_space_size, _ocr_text_concat_average_size
 from robot.libraries.GRPA.csv import _write_list_to_csv
-from robot.libraries.GRPA.api_request import _logistics_api_request_download_file, _logistics_api_request_send_start, _logistics_api_request_upload_file, _logistics_api_request_send_success, _logistics_api_request_send_page_count, _logistics_api_request_get_upload_detail, _logistics_api_request_send_fail_message, _logistics_api_request_create_transaction
+from robot.libraries.GRPA.api_request import _logistics_api_request_download_file, _logistics_api_request_send_start, _logistics_api_request_upload_file, _logistics_api_request_send_success, _logistics_api_request_send_page_count, _logistics_api_request_get_upload_detail, _logistics_api_request_send_fail_message, _logistics_api_request_create_transaction, _new_version_ghf_api_request_download_file, _new_version_ghf_api_request_fail_message,_new_version_ghf_api_request_send_success, _new_version_ghf_api_request_upload_file
 from robot.libraries.GRPA.pdf import _convert_pdf_to_img,_get_pdf_full_text,_get_pdf_full_text_by_page
 from robot.libraries.GRPA.common import _get_file_sorted_modified_date, _join_list, _json_to_dict, _sorted_vertexs_to_list,_sorted_vertexs_by_line, _get_uuidv4, _random_string, _convert_csv_list_to_dict_of_list, _convert_csv_list_to_list_of_dict, _convert_dict_of_list_to_csv_list, _convert_list_of_dict_to_csv_list
 from robot.libraries.GRPA.assets import _get_asset_string_variable, _get_asset_integer_variable, _get_asset_float_variable
@@ -219,3 +219,17 @@ class GRPA:
     @keyword("OCR Text Concat Average Size")
     def ocr_text_concat_average_size(self,vertexs=None):
         return _ocr_text_concat_average_size(vertexs)
+    
+    # New GHF API
+    @keyword("New GHF API Request Download File")
+    def new_version_ghf_api_request_download_file(self, apiUrl=None, record_id=None, token=None, path=None):
+        return _new_version_ghf_api_request_download_file(apiUrl, record_id, token, path)
+    @keyword("New GHF API Request Upload Result File")
+    def new_version_ghf_api_request_upload_file(self, apiUrl=None, record_id=None, token=None,  company=None, path=None, file_name=None):
+        return _new_version_ghf_api_request_upload_file(apiUrl, record_id, token, company, path, file_name)
+    @keyword("New GHF API Request Send Success")
+    def new_version_ghf_api_request_send_success(self, apiUrl=None, ts_id=None, token=None, page_count=0, invalid_page_count=0,remark=None,bom=False):
+        return _new_version_ghf_api_request_send_success(apiUrl, ts_id, token, page_count, invalid_page_count, remark, bom)
+    @keyword("New GHF API Request Send Failed")
+    def new_version_ghf_api_request_fail_message(self, apiUrl=None, ts_id=None, token=None, page_count=0, invalid_page_count=0,remark=None,bom=False):
+        return _new_version_ghf_api_request_fail_message(apiUrl, ts_id, token, page_count, invalid_page_count, remark, bom)
