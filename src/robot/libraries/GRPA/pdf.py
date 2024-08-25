@@ -1,9 +1,9 @@
 import fitz
 
-def _convert_pdf_to_img(pdf_path=None, pages=None, output_path=None, file_name=None, format_file=None, scale=None, rotation=None):
+def _convert_pdf_to_img(pdf_path=None, pages=None, output_path=None, file_name=None, format_file=None, scale=None, rotation=0):
     try:
         pdf = fitz.open(pdf_path)
-        mat = fitz.Matrix(scale, scale)
+        mat = fitz.Matrix(scale, scale).prerotate(int(rotation))
         if pages == '0':
             count = 0
             for p in pdf:
