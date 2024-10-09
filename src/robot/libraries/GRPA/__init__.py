@@ -225,8 +225,8 @@ class GRPA:
     def new_version_ghf_api_request_download_file(self, apiUrl=None, record_id=None, token=None, path=None):
         return _new_version_ghf_api_request_download_file(apiUrl, record_id, token, path)
     @keyword("New GHF API Request Upload Result File")
-    def new_version_ghf_api_request_upload_file(self, apiUrl=None, record_id=None, token=None,  path=None, file_name=None):
-        return _new_version_ghf_api_request_upload_file(apiUrl, record_id, token, path, file_name)
+    def new_version_ghf_api_request_upload_file(self, apiUrl=None, ts_id=None, token=None,  path=None, file_name=None):
+        return _new_version_ghf_api_request_upload_file(apiUrl, ts_id, token, path, file_name)
     @keyword("New GHF API Request Send Success")
     def new_version_ghf_api_request_send_success(self, apiUrl=None, ts_id=None, token=None, page_count=0, invalid_page_count=0,remark=None,bom=False):
         return _new_version_ghf_api_request_send_success(apiUrl, ts_id, token, page_count, invalid_page_count, remark, bom)
