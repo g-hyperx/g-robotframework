@@ -110,10 +110,11 @@ def _new_version_ghf_api_request_download_file(apiUrl=None, source_id=None, toke
     headers = {
         'x-api-key': token,
     }
-    response = requests.request("GET", f"{apiUrl}/source-file/{source_id}", headers=headers, verify=False)
+    response = requests.request("GET", f"{apiUrl}/files/source-file/{source_id}", headers=headers, verify=False)
     with open(path, "wb") as binary_file:
         binary_file.write(response.content)
         binary_file.close()
+        
 
 
 def _new_version_ghf_api_request_upload_file(apiUrl=None, ts_id=None, token=None, path=None, file_name=None):
